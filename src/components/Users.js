@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import { useState } from 'react';
 import useFetch from 'react-custom-fetch-hook';
+import NavigationPage from './NavigationPage';
 
 
 const Users = () => {
@@ -39,14 +40,15 @@ const Users = () => {
 
 
   return (
-    <div>
+    <div className='usersBtn'>
         <h1>Users of Router</h1>
         <nav>
-            <NavLink to='/users/firstUsers'>First User</NavLink>
-            <NavLink to='/users/secondUser'>Second User</NavLink>
+          <NavigationPage/>
+            <NavLink to='/users/firstUsers' className='navlink routes'>First User</NavLink>
+            <NavLink to='/users/secondUser' className='navlink routes'>Second User</NavLink>
         </nav>
         <Outlet />
-
+        <br/>
         <h2>List of Users</h2>
         {data?.results.slice(skip, skip + perPage).map((item, index) => {
           const name = `${item.name.title} ${item.name.first} ${item.name.last}`
@@ -59,8 +61,11 @@ const Users = () => {
           )
         })}
        
+       <br />
+       
         <p className='noOfPages'>Pages: {page} of {noOfPages}</p>
 
+        <br />
         {
           <button
            disabled={page <= 1}
@@ -77,6 +82,7 @@ const Users = () => {
             <button onClick={()=> setPage(item)}>{item}</button>
           ))
         }
+
 
         {
           <button 

@@ -1,8 +1,15 @@
 import React from 'react'
 
 const FirstUser = () => {
+  
   return (
-    <div>First User Account</div>
+    <div>
+      <br/>
+      <h1>First User Account</h1>
+
+
+    </div>
+    
   )
 }
 
